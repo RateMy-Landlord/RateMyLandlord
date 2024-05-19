@@ -100,16 +100,16 @@ input[type=submit] {
 
 <!-- Header -->
 <header class="w3-container w3-red w3-center" style="padding:128px 16px">
-  <h1 class="w3-margin w3-jumbo">Rate My Landlord</h1>
-  <p class="w3-xlarge">Enter your current address to begin</p>
-  <form autocomplete="off" action="/action_page.php">
-	<div class="autocomplete" style="width:1000px;">
-	  <input id="myInput" type="text" name="myCountry" placeholder="Address">
-	</div>
-	<input type="submit">
-  </form>
+    <h1 class="w3-margin w3-jumbo">Rate My Landlord</h1>
+    <p class="w3-xlarge">Enter your current address to begin</p>
+    <form autocomplete="off" action="{% url 'search_landlords_by_address' %}" method="POST">
+      {% csrf_token %}
+      <div class="autocomplete" style="width:1000px;">
+        <input id="myInput" type="text" name="address" placeholder="Address">
+      </div>
+      <input type="submit" value="Search">
+    </form>
 </header>
-
 
 <script>
 // Used to toggle the menu on small screens when clicking on the menu button

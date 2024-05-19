@@ -20,5 +20,6 @@ from ratemylandord import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-     path('', views.index,name="index")
+    path('', views.index,name="index"),
+    path('search/', views.search_landlords_by_address, name='search_landlords_by_address'),
 ]
