@@ -375,7 +375,9 @@ input[type=submit] {
               {% endfor %}
               </ul>
             {% else %}
-              <h1>add landlord here</h1>
+            <a href="/add_landlord">
+              <button class="button is-link">add landlord here</button>
+            </a>
             {% endif %}
           </div>
         {% endblock %}
