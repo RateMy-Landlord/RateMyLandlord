@@ -9,7 +9,8 @@ def landlord_detail(request, landlord_id):
     landlord = get_object_or_404(Landlord, pk=landlord_id)
     reviews = Reviews.objects.filter(lord=landlord)
     avg_rating = reviews.aggregate(Avg('rating'))['rating__avg']
-    return render(request, 'landlord_detail.html', {'landlord': landlord, 'reviews': reviews, 'average': avg_rating})
+    formatted_avg_rating = "{:.1f}".format(avg_rating)
+    return render(request, 'landlord_detail.html', {'landlord': landlord, 'reviews': reviews, 'average': formatted_avg_rating})
 
 def add_review(request, landlord_id):
     if request.method == 'POST':
