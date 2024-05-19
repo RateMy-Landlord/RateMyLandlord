@@ -26,4 +26,5 @@ urlpatterns = [
     path('search/', ratemylandord.views.search_landlords_by_address, name='search_landlords_by_address'),
     path('add_landlord/', landlord.views.add_landlord, name='add_landlord'),
     path('landlord/<int:landlord_id>/', reviews.views.landlord_detail, name='landlord_detail'),
+    path('add_review/<int:landlord_id>/', reviews.views.add_review, name='add_review'),
 ]
