@@ -13,12 +13,16 @@ def landlord_detail(request, landlord_id):
 
 def add_review(request, landlord_id):
     if request.method == 'POST':
+        print(request.POST)
         form = ReviewForm(request.POST)
         if form.is_valid():
             review = form.save(commit=False)
             review.lord = Landlord.objects.get(pk=landlord_id)
             review.save()
             return HttpResponse("Review successfully saved!")
+        else:
+            print(form.errors)
+            return HttpResponse("Review upload failed!")
     else:
         form = ReviewForm()
     return render(request, 'add_review.html', {'form': form})
