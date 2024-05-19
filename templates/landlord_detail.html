@@ -1,11 +1,88 @@
-<h1>{{ landlord.name }}</h1>
-<p>{{ landlord.address }}</p>
-<p>{{ average }}
-<h2>Reviews:</h2>
-<ul>
-{% for review in reviews %}
-    <li>{{ review.tenant }} gave a rating of {{ review.rating }}. Reason: "{{ review.comment }}"</li>
-{% empty %}
-    <li>No reviews yet.</li>
-{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #b0c4de;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .prof_header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .land_name {
+            font-size: 32px;
+            color: #1e90ff;
+        }
+        .land_details {
+            font-size: 18px;
+            color: #333;
+        }
+        .review_section {
+            margin-top: 20px;
+        }
+        .review {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .reviewer_name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1e90ff;
+        }
+        .rating {
+            font-size: 16px;
+            color: #ffa500;
+        }
+        .comments {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+        h2 {
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="prof_header">
+            <h1 class="land_name">{{ landlord.name }}</h1>
+            <p class="rating" style="font-size: larger;"><b>Score: </b>{{ average }}/5</p>
+            <p class="land_details">{{ landlord.address }}</p>
+            
+        </div>
+        <div class="review_section">
+<h2>Reviews</h2>
+            {% for review in reviews %}
+                <div class="review">
+                    <p class="reviewer_name">{{ review.tenant }}</p>
+                    <p class="rating">Rating: {{ review.rating }} / 5</p>
+                    <p class="comments">{{ review.comment }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    
 </ul>
+</body>
+</html>
