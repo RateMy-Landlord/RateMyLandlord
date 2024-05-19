@@ -1,87 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Add Landlord</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            color: #333;
-            margin: 0;
-            padding: 0;
+        * {
+            font-family: 'Lato', sans-serif;
         }
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border: 1px solid #b0c4de;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        body{
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            min-height: 80vh;
+            justify-content: center;
+            flex-wrap: nowrap;
         }
-        .land_header {
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        #form-header {
+            font-family: 'Montserrat', sans-serif;
             text-align: center;
-            margin-bottom: 30px;
-        }
-        .land_name {
-            font-size: 32px;
-            color: #1e90ff;
-        }
-        .prof_details {
-            font-size: 18px;
             color: #333;
         }
-        .review_section {
-            margin-top: 20px;
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
         }
-        .review {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 20px;
+        form p {
+            margin-bottom: 15px;
         }
-        .reviewer_name {
-            font-size: 18px;
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 10px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
             font-weight: bold;
-            color: #1e90ff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
         }
-        .rating {
-            font-size: 16px;
-            color: #ffa500;
-        }
-        .comments {
-            margin-top: 10px;
-            font-size: 16px;
-            color: #333;
-        }
-        h2 {
-            color: #1e90ff;
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="land_header">
-            <h1 class="land_name">{{ landlord.name }}</h1>
-            <p class="prof_details">{{ professor.address }}</p>
-        </div>
-        <div class="review_section">
-            <h2>Reviews</h2>
-            {% for review in reviews %}
-                <div class="review">
-                    <p class="reviewer_name">{{ review.reviewer_name }}</p>
-                    <p class="rating">Rating: {{ review.rating }} / 5</p>
-                    <p class="comments">{{ review.comments }}</p>
-                </div>
-            {% endfor %}
-        </div>
+        <h2 id="form-header">Add a New landlord</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
     </div>
-    <h2>Add a New Landlord</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
 </body>
 </html>
