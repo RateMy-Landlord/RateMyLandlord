@@ -15,6 +15,7 @@ def search_landlords_by_address(request):
         
         context = {
             'landlords': landlords,
+            'address': address
         }
         return render(request, 'results.html', context)
     else:
