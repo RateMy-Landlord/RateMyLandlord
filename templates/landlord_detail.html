@@ -263,10 +263,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         }
         .prof_header {
             text-align: center;
-            margin-bottom: 30px;
+            padding-top: 30px;
         }
         .land_name {
-            font-size: 32px;
+            font-size:64px;
+            font-weight: bolder;
             color: #1e90ff;
         }
         .land_details {
@@ -316,12 +317,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .title.is-4{
     padding-top: 20px;
 }
+.w3-top:hover{
+    cursor: pointer;
+}
     </style>
 </head>
 <body>
     <div class="w3-top">
         <div class="w3-bar w3-red w3-card w3-left-align w3-large">
-          <h1>RateMyLandlord</h1>
+          <h1 onclick="location.href ='/'">RateMyLandlord</h1>
         </div>
       
        
@@ -330,7 +334,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         <div class="prof_header">
             <h1 class="land_name">{{ landlord.name }}</h1>
             <p class="rating" style="font-size: larger;"><b>Score: </b>{{ average }}/5</p>
-            <p class="land_details">{{ landlord.address }}</p>
+            <p class="land_details">Owns the property at: {{ landlord.address }}</p>
             
         </div>
         <div class="review_section">
