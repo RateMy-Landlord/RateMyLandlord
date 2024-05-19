@@ -1,0 +1,10 @@
+<h1>{{ landlord.name }}</h1>
+<p>{{ landlord.address }}</p>
+<h2>Reviews:</h2>
+<ul>
+{% for review in reviews %}
+    <li>{{ review.tenant }} gave a rating of {{ review.rating }}. Reason: "{{ review.comment }}"</li>
+{% empty %}
+    <li>No reviews yet.</li>
+{% endfor %}
+</ul>
