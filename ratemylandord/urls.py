@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import path
 import ratemylandord.views
 import landlord.views
+import reviews.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', ratemylandord.views.index,name="index"),
     path('search/', ratemylandord.views.search_landlords_by_address, name='search_landlords_by_address'),
     path('add_landlord/', landlord.views.add_landlord, name='add_landlord'),
+    path('landlord/<int:landlord_id>/', reviews.views.landlord_detail, name='landlord_detail'),
 ]

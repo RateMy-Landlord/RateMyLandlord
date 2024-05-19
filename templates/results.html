@@ -359,10 +359,12 @@ input[type=submit] {
         <h2>Results for "{{ address }}"</h2>
         <ul>
         {% for landlord in landlords %}
+        <a href="{% url 'landlord_detail' landlord.id %}">
             <div class="result-item">
                 <li class="land_name">{{ landlord.name }}</li> 
                 <li class="land_address">{{ landlord.address }}</li>
             </div>  
+        </a>
         {% endfor %}
         </ul>
     </div>
