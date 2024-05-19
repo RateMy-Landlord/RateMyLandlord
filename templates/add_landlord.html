@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
-        <title>Add Landlord</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Tenant</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
 </head>
 <body>
+
+<div class="section">
     <div class="container">
-        <h2 id="form-header">Add a New Landlord</h2>
+        <h1 class="title">Add a Landlord</h1>
         <form method="post" class="box">
             {% csrf_token %}
             <div class="field">
-                <label class="label" for="{{ form.name.id_for_label }}">Tenant Name</label>
-                <div class="control">
-                    {{ form.name }}
+                <label class="label" for="{{ form.name.id_for_label }}">Landlord Name</label>
+                <div class="control has-icons-left">
+                    <input class="input" type="text" placeholder="Enter Landlord Name" id="{{ form.name.auto_id }}" name="{{ form.name.html_name }}" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
                 </div>
             </div>
+            
             
             <div class="field">
                 <label class="label" for="{{ form.address.id_for_label }}">Address</label>
                 <div class="control">
-                    {{ form.address }}
+                    <textarea class="textarea" placeholder="Enter Address" id="{{ form.address.auto_id }}" name="{{ form.address.html_name }}"></textarea>
                 </div>
             </div>
-            <button type="submit" class="button is-primary">Save</button>
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button type="submit" class="button is-link">Save</button>
+                </div>
+            </div>
+
         </form>
     </div>
+</div>
 </body>
 </html>
