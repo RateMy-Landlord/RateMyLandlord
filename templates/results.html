@@ -310,21 +310,62 @@ input[type=submit] {
   background-color: DodgerBlue !important; 
   color: #ffffff; 
 }
+.results-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    
+}
+.results-container h2{
+    color: black;
+}
+.result-item {
+    background-color: #f0f8ff;
+    border: 1px solid #87cefa;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    list-style-type: none;
+}
+.land_name {
+    font-size: 1.5em;
+    color: #1e90ff;
+}
+.land_address {
+    font-size: 1em;
+    color: #4682b4;
+}
+.w3-bar h1{
+    padding-left: 10px;
+}
 </style>
 </head>
 <body>
-    
+    <div class="w3-top">
+        <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+          <h1><b>RateMyLandlord</b></h1>
+        </div>
+      
+       
+      </div>
 <!-- Header -->
 <header class="w3-container w3-red w3-center" style="padding:128px 16px">
     
     {% block content %}
-    <div class="object"></div>
-    <h2>Results for "{{ address }}"</h2>
-    <ul>
-    {% for landlord in landlords %}
-        <li>{{ landlord.name }} - {{ landlord.address }}</li>
-    {% endfor %}
-    </ul>
+    <div class="results-container">
+        <h2>Results for "{{ address }}"</h2>
+        <ul>
+        {% for landlord in landlords %}
+            <div class="result-item">
+                <li class="land_name">{{ landlord.name }}</li> 
+                <li class="land_address">{{ landlord.address }}</li>
+            </div>  
+        {% endfor %}
+        </ul>
+    </div>
     {% endblock %}
 </header>
 
