@@ -341,6 +341,7 @@ input[type=submit] {
 .w3-bar h1{
     padding-left: 10px;
 }
+
 </style>
 </head>
 <body>
@@ -358,20 +359,26 @@ input[type=submit] {
     <div class="results-container">
         <h2>Results for "{{ address }}"</h2>
         <ul>
-        {% for landlord in landlords %}
-        <a href="{% url 'landlord_detail' landlord.id %}">
-            <div class="result-item">
-                <li class="land_name">{{ landlord.name }}</li> 
-                <li class="land_address">{{ landlord.address }}</li>
-            </div>  
-        </a>
-        <a href="{% url 'add_review' landlord.id %}">
-            <div>MAKE A REVIEW</div>
-        </a>
-        {% endfor %}
-        </ul>
-    </div>
-    {% endblock %}
+          {% if landlords %}
+            {% for landlord in landlords %}
+
+              </script>
+              <a href="{% url 'landlord_detail' landlord.id %}">
+                  <div class="result-item">
+                      <li class="land_name">{{ landlord.name }}</li> 
+                      <li class="land_address">{{ landlord.address }}</li>
+                  </div>  
+              </a>
+              <a href="{% url 'add_review' landlord.id %}">
+                  <div>MAKE A REVIEW</div>
+              </a>
+              {% endfor %}
+              </ul>
+            {% else %}
+              <h1>add landlord here</h1>
+            {% endif %}
+          </div>
+        {% endblock %}
 </header>
 
 <script>
