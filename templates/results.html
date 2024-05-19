@@ -365,6 +365,9 @@ input[type=submit] {
                 <li class="land_address">{{ landlord.address }}</li>
             </div>  
         </a>
+        <a href="{% url 'add_review' landlord.id %}">
+            <div>MAKE A REVIEW</div>
+        </a>
         {% endfor %}
         </ul>
     </div>
