@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Review</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+    <style>
+      .custom-form {
+            max-width: 600px;
+            margin: auto;
+        }
+      .custom-button:hover {
+            background-color: #007bff!important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="section">
+    <div class="container">
+        <h1 class="title">Add a Review</h1>
+        <form method="post" class="box custom-form">
+            {% csrf_token %}
+            <div class="field">
+                <label class="label" for="{{ form.tenant.id_for_label }}">Tenant Name</label>
+                <div class="control has-icons-left">
+                    <input class="input" type="text" placeholder="Enter Tenant Name" id="{{ form.tenant.auto_id }}" name="tenant" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </div>
+            </div>
+
+            
+            <div class="field">
+                <label class="label" for="{{ form.rating.id_for_label }}">Rating</label>
+                <div class="control">
+                    <div class="select is-fullwidth">
+                        {{ form.rating }}
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="field">
+                <label class="label" for="{{ form.comment.id_for_label }}">Comment</label>
+                <div class="control">
+                    <textarea class="textarea" id="{{ form.comment.auto_id }}" name="{{ form.comment.html_name }}"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="button is-primary custom-button is-rounded">Submit Review</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

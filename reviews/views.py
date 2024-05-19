@@ -13,7 +13,6 @@ def landlord_detail(request, landlord_id):
 
 def add_review(request, landlord_id):
     if request.method == 'POST':
-        print(request.POST)
         form = ReviewForm(request.POST)
         if form.is_valid():
             review = form.save(commit=False)
@@ -21,7 +20,6 @@ def add_review(request, landlord_id):
             review.save()
             return HttpResponse("Review successfully saved!")
         else:
-            print(form.errors)
             return HttpResponse("Review upload failed!")
     else:
         form = ReviewForm()
